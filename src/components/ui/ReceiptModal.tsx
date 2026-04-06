@@ -69,7 +69,7 @@ export default function ReceiptModal({ saleId, onClose }: ReceiptModalProps) {
   </style>
 </head>
 <body>
-  <div class="center bold" style="font-size:14px;margin-bottom:2px">${receipt.business_name || 'SwiftPOS Store'}</div>
+  <div class="center bold" style="font-size:14px;margin-bottom:2px">${receipt.business_name || 'VaultPoint Store'}</div>
   <div class="center" style="font-size:10px">${receipt.business_address || ''}</div>
   <div class="center" style="font-size:10px">${receipt.business_phone || ''}</div>
   <div class="divider"></div>

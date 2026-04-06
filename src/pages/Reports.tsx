@@ -6,7 +6,7 @@ import {
 } from 'recharts'
 import { getDailyReport, getWeeklyReport, getMonthlyReport, getPaymentMethodReport, getCashierPerformance, getCategoryRevenue } from '../api/reports'
 
-const COLORS = ['#4F46E5', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6']
+const COLORS = ['#4F46E5', '#10B981', '#F59E0B', '#EF4444', '#0096C7']
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api'
 

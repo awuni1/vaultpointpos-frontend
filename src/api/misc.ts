@@ -3,6 +3,12 @@ import client from './client'
 // Payments
 export const getPayments = () => client.get('/payments/')
 export const getCashReconciliation = () => client.get('/payments/reconciliation/')
+export const initiateMomo = (data: { sale_id: number; phone: string; provider: string; email?: string }) =>
+  client.post('/payments/momo/initiate/', data)
+export const submitMomoOtp = (data: { reference: string; otp: string }) =>
+  client.post('/payments/momo/submit-otp/', data)
+export const verifyMomoPayment = (data: { reference: string }) =>
+  client.post('/payments/paystack/verify/', data)
 
 // Receipts
 export const getReceipt = (saleId: number) => client.get(`/receipts/${saleId}/`)

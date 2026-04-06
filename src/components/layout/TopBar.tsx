@@ -1,105 +1,96 @@
-import { Bell, Search } from 'lucide-react'
+import { Bell, Search, Settings } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import { useAuthStore } from '../../store/authStore'
 
-interface TopBarProps {
-  title: string
-}
+interface TopBarProps { title: string }
 
-export default function TopBar({ title }: TopBarProps) {
-  const { user } = useAuthStore()
+export default function TopBar({ title: _title }: TopBarProps) {
   const navigate = useNavigate()
 
   return (
     <header
-      className="h-16 px-6 flex items-center justify-between shrink-0 relative"
       style={{
-        background: 'rgba(7,9,18,0.8)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
+        height: 56, padding: '0 24px',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        background: 'white',
+        borderBottom: '1px solid #E2E8F0',
+        flexShrink: 0,
+        gap: 16,
       }}
     >
-      {/* Subtle top glow line */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-px pointer-events-none"
-        style={{
-          background: 'linear-gradient(90deg, transparent 0%, rgba(124,58,237,0.3) 50%, transparent 100%)',
-        }}
-      />
-
-      {/* Title */}
-      <div className="flex items-center gap-3">
+      {/* Logo */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
         <div
-          className="w-1.5 h-6 rounded-full"
-          style={{ background: 'linear-gradient(180deg, #7C3AED 0%, #3B82F6 100%)' }}
-        />
-        <h1 className="text-base font-bold text-white tracking-tight">{title}</h1>
+          style={{
+            width: 28, height: 28, borderRadius: 8,
+            background: '#1B263B',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          <svg width="14" height="14" viewBox="0 0 26 26" fill="none">
+            <rect x="3" y="4" width="20" height="18" rx="3.5" stroke="white" strokeWidth="1.8"/>
+            <circle cx="13" cy="13" r="4" stroke="white" strokeWidth="1.8"/>
+            <circle cx="13" cy="13" r="1.8" fill="white"/>
+            <line x1="13" y1="9" x2="13" y2="6.5" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
+            <line x1="17" y1="13" x2="19.5" y2="13" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
+          </svg>
+        </div>
+        <span
+          style={{
+            fontFamily: 'Manrope, Inter, sans-serif',
+            fontWeight: 800, fontSize: 13,
+            letterSpacing: '0.06em', color: '#1B263B',
+          }}
+        >
+          VaultPoint POS
+        </span>
       </div>
 
-      {/* Actions */}
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          onClick={() => navigate('/products')}
-          title="Search products"
-          className="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-white transition-all duration-200"
+      {/* Search */}
+      <div style={{ flex: 1, maxWidth: 380, position: 'relative' }}>
+        <Search size={13} color="#94A3B8" style={{ position: 'absolute', left: 11, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }} />
+        <input
+          placeholder="Search analytics..."
           style={{
-            background: 'rgba(255,255,255,0.05)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            width: '100%', boxSizing: 'border-box',
+            padding: '7px 12px 7px 32px',
+            background: '#F5F7FA',
+            border: '1px solid #E2E8F0',
+            borderRadius: 9, fontSize: 12,
+            color: '#1B263B', outline: 'none',
+            fontFamily: 'Inter, sans-serif',
           }}
-          onMouseEnter={e => {
-            (e.currentTarget as HTMLElement).style.background = 'rgba(124,58,237,0.15)'
-            ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(124,58,237,0.3)'
-          }}
-          onMouseLeave={e => {
-            (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)'
-            ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)'
-          }}
-        >
-          <Search size={14} />
-        </button>
+          onFocus={e => { e.target.style.borderColor = '#1B263B'; e.target.style.background = 'white' }}
+          onBlur={e =>  { e.target.style.borderColor = '#E2E8F0'; e.target.style.background = '#F5F7FA' }}
+        />
+      </div>
 
-        <button
-          type="button"
-          onClick={() => navigate('/notifications')}
-          title="Notifications"
-          className="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-white transition-all duration-200 relative"
-          style={{
-            background: 'rgba(255,255,255,0.05)',
-            border: '1px solid rgba(255,255,255,0.08)',
-          }}
-          onMouseEnter={e => {
-            (e.currentTarget as HTMLElement).style.background = 'rgba(124,58,237,0.15)'
-            ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(124,58,237,0.3)'
-          }}
-          onMouseLeave={e => {
-            (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)'
-            ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)'
-          }}
-        >
-          <Bell size={14} />
-          <span
-            className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full"
-            style={{ background: '#F43F5E', boxShadow: '0 0 6px rgba(244,63,94,0.7)' }}
-          />
-        </button>
+      {/* Right actions */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
+        {[
+          { icon: Bell,     action: () => navigate('/notifications'), badge: true },
+          { icon: Settings, action: () => navigate('/settings'),      badge: false },
+        ].map(({ icon: Icon, action, badge }, i) => (
+          <div key={i} style={{ position: 'relative' }}>
+            <button
+              type="button"
+              onClick={action}
+              style={{
+                width: 32, height: 32, borderRadius: 8,
+                background: '#F5F7FA', border: '1px solid #E2E8F0',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer', color: '#415A77', transition: 'all 0.15s',
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = '#1B263B'; (e.currentTarget as HTMLElement).style.color = '#1B263B' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = '#E2E8F0'; (e.currentTarget as HTMLElement).style.color = '#415A77' }}
+            >
+              <Icon size={14} />
+            </button>
+            {badge && (
+              <span style={{ position: 'absolute', top: 3, right: 3, width: 7, height: 7, borderRadius: '50%', background: '#F43F5E', border: '1.5px solid white' }} />
+            )}
+          </div>
+        ))}
 
-        <div className="flex items-center gap-2.5 pl-3" style={{ borderLeft: '1px solid rgba(255,255,255,0.07)' }}>
-          <div
-            className="w-8 h-8 rounded-xl flex items-center justify-center text-white text-xs font-bold"
-            style={{
-              background: 'linear-gradient(135deg, #7C3AED 0%, #3B82F6 100%)',
-              boxShadow: '0 2px 12px rgba(124,58,237,0.4)',
-            }}
-          >
-            {user?.full_name?.charAt(0).toUpperCase() || 'U'}
-          </div>
-          <div className="hidden sm:block">
-            <p className="text-xs font-semibold text-white leading-tight">{user?.full_name}</p>
-            <p className="text-[10px] text-slate-500 capitalize font-medium">{user?.role}</p>
-          </div>
-        </div>
       </div>
     </header>
   )

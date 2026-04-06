@@ -12,12 +12,12 @@ interface StatCardProps {
 
 const configs = {
   indigo: {
-    gradient: 'linear-gradient(135deg, rgba(124,58,237,0.2) 0%, rgba(59,130,246,0.1) 100%)',
-    iconBg: 'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)',
-    iconShadow: '0 4px 16px rgba(124,58,237,0.45)',
-    border: 'rgba(124,58,237,0.25)',
-    valueColor: '#A78BFA',
-    glowColor: 'rgba(124,58,237,0.1)',
+    gradient: 'linear-gradient(135deg, rgba(0,119,182,0.2) 0%, rgba(65,90,119,0.1) 100%)',
+    iconBg: 'linear-gradient(135deg, #0077B6 0%, #1B263B 100%)',
+    iconShadow: '0 4px 16px rgba(0,119,182,0.45)',
+    border: 'rgba(0,119,182,0.28)',
+    valueColor: '#90CAF9',
+    glowColor: 'rgba(0,119,182,0.1)',
   },
   green: {
     gradient: 'linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(6,182,212,0.1) 100%)',

@@ -17,30 +17,29 @@ export default function Modal({ open, onClose, title, children, size = 'md' }: M
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in">
       <div
         className="absolute inset-0"
-        style={{ background: 'rgba(4,6,16,0.8)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }}
+        style={{ background: 'rgba(27,38,59,0.4)', backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)' }}
         onClick={onClose}
       />
       <div
         className={`relative w-full ${sizes[size]} max-h-[90vh] overflow-y-auto rounded-2xl animate-slide-up`}
         style={{
-          background: 'linear-gradient(135deg, #131D35 0%, #0D1526 100%)',
-          border: '1px solid rgba(124,58,237,0.2)',
-          boxShadow: '0 25px 80px rgba(0,0,0,0.7)',
+          background: '#FFFFFF',
+          border: '1px solid #E2E8F0',
+          boxShadow: '0 20px 60px rgba(27,38,59,0.18)',
         }}
       >
         <div
           className="flex items-center justify-between px-6 py-4"
-          style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}
+          style={{ borderBottom: '1px solid #F1F5F9' }}
         >
-          <h2 className="text-base font-bold text-white tracking-tight">{title}</h2>
+          <h2 style={{ fontSize: 15, fontWeight: 700, color: '#1B263B', margin: 0, fontFamily: 'Manrope, Inter, sans-serif' }}>{title}</h2>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close modal"
-            className="w-8 h-8 rounded-xl flex items-center justify-center text-slate-400 hover:text-white transition-colors"
-            style={{ background: 'rgba(255,255,255,0.06)' }}
+            style={{ width: 30, height: 30, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#F5F7FA', border: '1px solid #E2E8F0', color: '#415A77', cursor: 'pointer' }}
           >
-            <X size={15} />
+            <X size={14} />
           </button>
         </div>
         <div className="px-6 py-5">{children}</div>

@@ -3,7 +3,7 @@ import Sidebar from './Sidebar'
 import TopBar from './TopBar'
 
 const titles: Record<string, string> = {
-  '/': 'Dashboard',
+  '/dashboard': 'Dashboard',
   '/pos': 'Point of Sale',
   '/products': 'Products',
   '/categories': 'Categories',
@@ -29,12 +29,12 @@ const titles: Record<string, string> = {
 export default function Layout() {
   const { pathname } = useLocation()
   const base = '/' + pathname.split('/')[1]
-  const title = titles[base] || 'SwiftPOS'
+  const title = titles[base] || 'VaultPoint'
 
-  // POS gets full screen, no topbar
+  // POS keeps dark full-screen layout
   if (pathname === '/pos') {
     return (
-      <div className="flex h-screen w-screen overflow-hidden" style={{ background: '#070912' }}>
+      <div className="flex h-screen w-screen overflow-hidden" style={{ background: '#080E1A' }}>
         <Sidebar />
         <main className="flex-1 overflow-hidden">
           <Outlet />
@@ -44,13 +44,13 @@ export default function Layout() {
   }
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden" style={{ background: '#070912' }}>
+    <div className="flex h-screen w-screen overflow-hidden" style={{ background: '#F5F7FA' }}>
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <TopBar title={title} />
         <main
           className="flex-1 overflow-y-auto p-6"
-          style={{ background: '#070912' }}
+          style={{ background: '#F5F7FA' }}
         >
           <Outlet />
         </main>

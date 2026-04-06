@@ -4,8 +4,8 @@ export default function Spinner({ size = 20 }: { size?: number }) {
       style={{
         width: size,
         height: size,
-        border: '2px solid rgba(124,58,237,0.2)',
-        borderTopColor: '#7C3AED',
+        border: '2px solid rgba(0,119,182,0.2)',
+        borderTopColor: '#0077B6',
         borderRadius: '50%',
       }}
       className="animate-spin"
@@ -20,8 +20,8 @@ export function PageSpinner() {
         style={{
           width: 36,
           height: 36,
-          border: '2.5px solid rgba(124,58,237,0.15)',
-          borderTopColor: '#7C3AED',
+          border: '2.5px solid rgba(0,119,182,0.15)',
+          borderTopColor: '#0077B6',
           borderRadius: '50%',
         }}
         className="animate-spin"
